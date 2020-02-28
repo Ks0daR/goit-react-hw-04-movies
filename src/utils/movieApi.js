@@ -5,4 +5,33 @@ function getPopularityFilms() {
   ).then(response => response.json());
 }
 
-export { getPopularityFilms };
+function getFilmsByQuery(query) {
+  return fetch(
+    `${baseUrl}search/movie?api_key=bd2cd46f09d0c01b4fe8699d010953c1&language=en-US&query=${query}`,
+  ).then(response => response.json());
+}
+
+function getFilmById(id) {
+  return fetch(
+    `${baseUrl}movie/${id}?api_key=bd2cd46f09d0c01b4fe8699d010953c1`,
+  ).then(response => response.json());
+}
+
+function getMovieReviews(id) {
+  return fetch(
+    `${baseUrl}movie/${id}/reviews?api_key=bd2cd46f09d0c01b4fe8699d010953c1`,
+  ).then(response => response.json());
+}
+
+function getMovieCredits(id) {
+  return fetch(
+    `${baseUrl}movie/${id}/credits?api_key=bd2cd46f09d0c01b4fe8699d010953c1`,
+  ).then(response => response.json());
+}
+export {
+  getPopularityFilms,
+  getFilmsByQuery,
+  getFilmById,
+  getMovieReviews,
+  getMovieCredits,
+};
