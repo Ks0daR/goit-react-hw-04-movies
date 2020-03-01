@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './InputForm.module.css';
 
 class InputForm extends Component {
   state = {
@@ -17,11 +18,11 @@ class InputForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSerchSubmit}>
-        <input onChange={this.handleInput} placeholder="Input film name..." />
-        <button type="submit">Find Film</button>
+      <form className={styles.SearchForm} onSubmit={this.handleSerchSubmit}>
+        <input className={styles.SearchInput} onChange={this.handleInput} placeholder="Input film name..." />
+        <button className={styles.SearchButton} type="submit">Find Film</button>
       </form>
-    )
+    );
   }
 }
 

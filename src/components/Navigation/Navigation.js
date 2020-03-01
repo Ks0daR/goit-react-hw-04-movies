@@ -4,8 +4,8 @@ import routes from '../../routes';
 import styles from './Navigation.module.css';
 
 const Navigation = () => (
-  <ul>
-    <li>
+  <ul className ={styles.List}>
+    <li className ={styles.ListItem}>
       <NavLink
         exact
         to={routes.HomePage}
@@ -15,13 +15,13 @@ const Navigation = () => (
         Home
       </NavLink>
     </li>
-    <li>
+    <li className ={styles.ListItem}>
       <NavLink
         to={routes.MoviesPage}
         className={styles.menuItem}
         activeClassName={styles.menuItemActive}
       >
-        MoviesPage
+        Movies Page
       </NavLink>
     </li>
   </ul>

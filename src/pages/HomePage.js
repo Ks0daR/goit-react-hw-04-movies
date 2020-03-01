@@ -5,6 +5,7 @@ import Error from '../components/Error';
 import { withRouter } from 'react-router-dom';
 import { getPopularityFilms } from '../utils/movieApi';
 
+
 class HomePage extends Component {
   state = {
     popularFilms: '',

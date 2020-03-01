@@ -1,0 +1,15 @@
+.SearchForm {
+    margin-top: 16px;
+    text-align: center;
+}
+
+.SearchInput{
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+.SearchButton{
+    border: none;
+    font-size: 20px;
+    font-family: sans-serif;
+}

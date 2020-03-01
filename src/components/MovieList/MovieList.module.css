@@ -1,0 +1,8 @@
+.List{
+    list-style: none;
+}
+
+.ListLink {
+    font-family: sans-serif;
+    font-size: 20px;
+}

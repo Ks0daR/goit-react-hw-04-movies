@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
+import MovieDetails from '../components/MovieDetails';
 import MovieDetailsPageReview from '../pages/MovieDetailsPageReview';
 import MovieDetailsPageCredits from '../pages/MovieDetailsPageCredits';
-import Button from '../components/Button';
+
 import Error from '../components/Error';
 import Loader from '../components/Loader';
 import routes from '../routes';
@@ -20,33 +21,16 @@ class MovieDetailsPage extends Component {
     console.log(movieId);
     getFilmById(movieId)
       .then(data => this.setState({ filmData: data }))
-      .catch(error => this.setState({ error }))
+      .catch(error => this.setState({ error }));
   }
   render() {
-    const imgUrl = 'https://image.tmdb.org/t/p/w200/';
-    const { loading, error } = this.state;
-    const { title, poster_path, release_date, genres } = this.state.filmData;
+    const MovieDetailsWithRouter = withRouter(MovieDetails);
+    const { loading, error, filmData } = this.state;
     return (
       <>
         {error && <Error />}
         {loading && <Loader />}
-        {title && (
-          <div>
-            <h4>{title}</h4>
-            <img src={`${imgUrl}${poster_path}`} alt={title} />
-            <p>{release_date}</p>
-            {genres.map(genre => (
-              <span key={genre.name}>{genre.name} </span>
-            ))}
-            <br />
-            <Link to={`${this.props.match.url}/reviews`}>
-              <Button name={'Reviews'} />
-            </Link>
-            <Link to={`${this.props.match.url}/cast`}>
-              <Button name={'Cast'} />
-            </Link>
-          </div>
-        )}
+        {filmData && <MovieDetailsWithRouter movie={this.state.filmData} />}
 
         <Route path={routes.Cast} component={MovieDetailsPageCredits} />
         <Route path={routes.Reviews} component={MovieDetailsPageReview} />
