@@ -8,6 +8,7 @@ import Error from '../components/Error';
 import Loader from '../components/Loader';
 import routes from '../routes';
 import { getFilmById } from '../utils/movieApi';
+import queryParams from '../utils/queryStringPharse';
 
 class MovieDetailsPage extends Component {
   state = {
@@ -18,7 +19,6 @@ class MovieDetailsPage extends Component {
   componentDidMount() {
     this.setState({ loading: true });
     const { movieId } = this.props.match.params;
-    console.log(movieId);
     getFilmById(movieId)
       .then(data => this.setState({ filmData: data }))
       .catch(error => this.setState({ error }));

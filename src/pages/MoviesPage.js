@@ -5,6 +5,7 @@ import Error from '../components/Error';
 import Loader from '../components/Loader';
 import { withRouter } from 'react-router-dom';
 import { getFilmsByQuery } from '../utils/movieApi';
+import queryString from '../utils/queryStringPharse';
 
 class MoviesPage extends Component {
   state = {
@@ -15,11 +16,13 @@ class MoviesPage extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const oldQuery = prevState.searchQuery;
-    const newQuery = this.state.searchQuery;
+    const queryParams = queryString(this.props.location.search);
+    const oldQuery = prevProps.location.search;
+    const newQuery = this.props.location.search;
     if (oldQuery !== newQuery) {
+      console.log(queryParams.query);
       this.setState({ loading: true });
-      getFilmsByQuery(newQuery)
+      getFilmsByQuery(queryParams.query)
         .then(data => this.setState({ filmsListByQuery: data }))
         .catch(error => this.setState({ error }));
 
@@ -27,7 +30,11 @@ class MoviesPage extends Component {
     }
   }
   getNewSearchQuery = value => {
-    this.setState({ searchQuery: value });
+    // this.setState({ searchQuery: value });
+    this.props.history.push({
+      pathname: this.props.location.pahtname,
+      search: `query=${value}`,
+    });
   };
 
   render() {

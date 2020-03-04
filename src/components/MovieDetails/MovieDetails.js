@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button';
-import styles from './MovieDetails.module.css'
+import styles from './MovieDetails.module.css';
 
 class MovieDetails extends Component {
+
   render() {
     const imgUrl = 'https://image.tmdb.org/t/p/w300/';
     const { title, poster_path, release_date, genres } = this.props.movie;

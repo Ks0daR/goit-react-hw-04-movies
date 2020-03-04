@@ -12,6 +12,7 @@ class MovieList extends Component {
             <NavLink
               className={styles.ListLink}
               to={`${routes.MoviesPage}/${result.id}`}
+           
             >
               {/* если сделать через this.props.match.url возникает проблема со / при переходе со страницы Home */}
               <h5>{result.title}</h5>
