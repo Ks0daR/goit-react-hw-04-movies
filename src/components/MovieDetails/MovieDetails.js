@@ -2,12 +2,19 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button';
 import styles from './MovieDetails.module.css';
+import PropTypes from 'prop-types';
 
 class MovieDetails extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.object).isRequired,
+  };
 
   render() {
     const imgUrl = 'https://image.tmdb.org/t/p/w300/';
-    const { title, poster_path, release_date, genres } = this.props.movie;
+    const { title, poster_path, release_date, genres } = this.props;
 
     return (
       <div className={styles.Container}>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MovieList from '../components/MovieList';
+
 import Loader from '../components/Loader';
 import Error from '../components/Error';
 import { withRouter } from 'react-router-dom';
@@ -18,7 +19,7 @@ class HomePage extends Component {
       .then(popularFilms => this.setState({ popularFilms }))
       .catch(error => {
         this.setState({ error });
-      })
+      });
   }
 
   render() {

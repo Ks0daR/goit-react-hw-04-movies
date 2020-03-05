@@ -5,9 +5,9 @@ function getPopularityFilms() {
   ).then(response => response.json());
 }
 
-function getFilmsByQuery(query) {
+function getFilmsByQuery(query, page) {
   return fetch(
-    `${baseUrl}search/movie?api_key=bd2cd46f09d0c01b4fe8699d010953c1&language=en-US&query=${query}`,
+    `${baseUrl}search/movie?api_key=bd2cd46f09d0c01b4fe8699d010953c1&language=en-US&query=${query}&page=${page}`,
   ).then(response => response.json());
 }
 

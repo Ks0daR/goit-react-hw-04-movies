@@ -3,12 +3,10 @@ import { Route, withRouter } from 'react-router-dom';
 import MovieDetails from '../components/MovieDetails';
 import MovieDetailsPageReview from '../pages/MovieDetailsPageReview';
 import MovieDetailsPageCredits from '../pages/MovieDetailsPageCredits';
-
 import Error from '../components/Error';
 import Loader from '../components/Loader';
 import routes from '../routes';
 import { getFilmById } from '../utils/movieApi';
-import queryParams from '../utils/queryStringPharse';
 
 class MovieDetailsPage extends Component {
   state = {
@@ -26,11 +24,19 @@ class MovieDetailsPage extends Component {
   render() {
     const MovieDetailsWithRouter = withRouter(MovieDetails);
     const { loading, error, filmData } = this.state;
+    const { title, poster_path, release_date, genres } = this.state.filmData;
     return (
       <>
         {error && <Error />}
         {loading && <Loader />}
-        {filmData && <MovieDetailsWithRouter movie={this.state.filmData} />}
+        {filmData && (
+          <MovieDetailsWithRouter
+            title={title}
+            poster_path={poster_path}
+            release_date={release_date}
+            genres={genres}
+          />
+        )}
 
         <Route path={routes.Cast} component={MovieDetailsPageCredits} />
         <Route path={routes.Reviews} component={MovieDetailsPageReview} />

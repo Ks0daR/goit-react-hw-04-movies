@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Credits.module.css';
+import PropTypes from 'prop-types';
 
 function Credits({ filmCreditsList }) {
   const imgUrl = 'https://image.tmdb.org/t/p/w200/';
@@ -28,5 +29,9 @@ function Credits({ filmCreditsList }) {
     </ul>
   );
 }
+
+Credits.propTypes = {
+  filmCreditsList: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default Credits;
