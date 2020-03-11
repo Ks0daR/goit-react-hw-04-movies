@@ -1,31 +1,23 @@
 import React from 'react';
+import CreditsItem from './CreditsItem';
 import styles from './Credits.module.css';
 import PropTypes from 'prop-types';
 
 function Credits({ filmCreditsList }) {
-  const imgUrl = 'https://image.tmdb.org/t/p/w200/';
   return (
     <ul className={styles.List}>
       {filmCreditsList.map(
         ({ cast_id, character, name, gender, profile_path }) => (
-          <li className={styles.ListItem} key={cast_id}>
-            <h5>{character}</h5>
-            <h6>{name}</h6>
-            <p>{gender === 1 ? 'female' : 'male'}</p>
-            {profile_path ? (
-              <img src={`${imgUrl}${profile_path}`} alt={name} />
-            ) : (
-              <img
-                src={
-                  'http://chto-takoe-lyubov.net/wp-content/uploads/2017/08/voprositelnyy-znak-stikhi.jpg'
-                }
-                alt={name}
-              />
-            )}
-          </li>
+          <CreditsItem
+            key={cast_id}
+            id={cast_id}
+            character={character}
+            name={name}
+            gender={gender}
+            profile={profile_path}
+          />
         ),
       )}
-      ;
     </ul>
   );
 }

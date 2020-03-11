@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button';
+import { imgUrl } from '../constants';
 import styles from './MovieDetails.module.css';
 import PropTypes from 'prop-types';
 
@@ -13,7 +14,6 @@ class MovieDetails extends Component {
   };
 
   render() {
-    const imgUrl = 'https://image.tmdb.org/t/p/w300/';
     const { title, poster_path, release_date, genres } = this.props;
 
     return (

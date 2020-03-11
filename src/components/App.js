@@ -1,17 +1,19 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Layout from './Layout';
-import HomePage from '../pages/HomePage';
-import MoviesPage from '../pages/MoviesPage';
-import MovieDetailsPage from '../pages/MovieDetailsPage';
 import routes from '../routes';
+import {
+  AsyncHomePage,
+  AsyncMoviesPage,
+  AsyncMovieDetailsPage,
+} from './constants';
 
 const App = () => (
   <Layout>
     <Switch>
-      <Route exact path={routes.HomePage} component={HomePage} />
-      <Route path={routes.MovieDetailsPage} component={MovieDetailsPage} />
-      <Route path={routes.MoviesPage} component={MoviesPage} />
+      <Route exact path={routes.HomePage} component={AsyncHomePage} />
+      <Route path={routes.MovieDetailsPage} component={AsyncMovieDetailsPage} />
+      <Route path={routes.MoviesPage} component={AsyncMoviesPage} />
       <Redirect to={routes.HomePage} />
     </Switch>
   </Layout>

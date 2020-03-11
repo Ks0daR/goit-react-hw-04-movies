@@ -8,6 +8,8 @@ import Loader from '../components/Loader';
 import routes from '../routes';
 import { getFilmById } from '../utils/movieApi';
 
+const MovieDetailsWithRouter = withRouter(MovieDetails);
+
 class MovieDetailsPage extends Component {
   state = {
     filmData: '',
@@ -18,11 +20,10 @@ class MovieDetailsPage extends Component {
     this.setState({ loading: true });
     const { movieId } = this.props.match.params;
     getFilmById(movieId)
-      .then(data => this.setState({ filmData: data }))
+      .then(filmData => this.setState({ filmData }))
       .catch(error => this.setState({ error }));
   }
   render() {
-    const MovieDetailsWithRouter = withRouter(MovieDetails);
     const { loading, error, filmData } = this.state;
     const { title, poster_path, release_date, genres } = this.state.filmData;
     return (

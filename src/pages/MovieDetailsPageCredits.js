@@ -14,7 +14,7 @@ class MovieDetailsPageCredits extends Component {
     this.setState({ loading: true });
     const { movieId } = this.props.match.params;
     getMovieCredits(movieId)
-      .then(data => this.setState({ filmCredits: data }))
+      .then(filmCredits => this.setState({ filmCredits }))
       .catch(error => this.setState({ error }));
   }
   render() {

@@ -8,6 +8,8 @@ import { withRouter } from 'react-router-dom';
 import { getFilmsByQuery } from '../utils/movieApi';
 import queryString from '../utils/queryStringPharse';
 
+const MovieListWithRouter = withRouter(MovieList);
+
 class MoviesPage extends Component {
   state = {
     searchQuery: '',
@@ -36,7 +38,7 @@ class MoviesPage extends Component {
   }
   getFetchOnQuery(query, page) {
     return getFilmsByQuery(query, page)
-      .then(data => this.setState({ filmsListByQuery: data }))
+      .then(filmsListByQuery => this.setState({ filmsListByQuery }))
       .catch(error => this.setState({ error }));
   }
 
@@ -57,8 +59,6 @@ class MoviesPage extends Component {
 
   render() {
     const { results, total_pages } = this.state.filmsListByQuery;
-    console.log(total_pages);
-    const MovieListWithRouter = withRouter(MovieList);
     const { error, loading } = this.state;
     return (
       <>

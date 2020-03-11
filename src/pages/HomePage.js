@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import MovieList from '../components/MovieList';
-
 import Loader from '../components/Loader';
 import Error from '../components/Error';
 import { withRouter } from 'react-router-dom';
 import { getPopularityFilms } from '../utils/movieApi';
+
+const MovieListWithRouter = withRouter(MovieList);
 
 class HomePage extends Component {
   state = {
@@ -23,7 +24,6 @@ class HomePage extends Component {
   }
 
   render() {
-    const MovieListWithRouter = withRouter(MovieList);
     const { results } = this.state.popularFilms;
     const { error, loading } = this.state;
 
